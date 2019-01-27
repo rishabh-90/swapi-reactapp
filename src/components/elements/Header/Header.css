@@ -1,0 +1,73 @@
+.swapi-header {
+  width: 100%;
+  height: auto;
+  background: #1c1c1c;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.swapi-header-content {
+  max-width: 1280px;
+  min-height: 120px;
+  height: auto;
+  padding: 20px 0px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.swapi-logo {
+  width: 100px;
+  margin-top: 20px;
+  float: left;
+}
+
+.swapi-tmdb-logo {
+  width: 122px;
+  margin-top: 25px;
+  float: right;
+}
+
+@media screen and (max-width: 500px) {
+  .swapi-header-content {
+    max-width: 1280px;
+    min-height: 0px;
+  }
+
+  .swapi-tmdb-logo {
+    display: inline-block;
+    width:80px;
+    margin-top: 0px;
+  }
+
+  .swapi-logo {
+    width: 150px;
+    margin-top: 5px;
+  }
+}
+
+ul {
+  list-style-type: none;
+    margin: 16px 0;
+    padding: 0;
+    overflow: hidden;
+    float: right;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: 'Abel', sans-serif;
+  font-size: 24px;
+}
+
+li a:hover {
+  background-color: #F6A511;
+}
