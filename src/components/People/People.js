@@ -10,11 +10,10 @@ import './People.css';
 
 class People extends Component {
   state = {
-    movies: [],
+    peoples: [],
     heroImage: null,
     loading: false,
     currentPage: false,
-    totalPages: 0,
     searchTerm: ''
   }
 
@@ -28,7 +27,7 @@ class People extends Component {
     console.log(searchTerm);
     let endpoint = '';
     this.setState({
-      movies: [],
+      peoples: [],
       loading: true,
       searchTerm
     })
@@ -59,7 +58,7 @@ class People extends Component {
       .then(result => result.json())
       .then(result => {
         this.setState({
-          movies: [...this.state.movies, ...result.results],
+          peoples: [...this.state.peoples, ...result.results],
           heroImage: this.state.heroImage || result.results[0],
           loading: false,
           currentPage: result.next || false,
@@ -85,7 +84,7 @@ class People extends Component {
             header={this.state.searchTerm ? 'Search Result' : 'Star War Characters'}
             loading={this.state.loading}
           >
-            {this.state.movies.map((element, i) => {
+            {this.state.peoples.map((element, i) => {
               return <Actor key={i} actor={element} />
             })}
           </FourColGrid>

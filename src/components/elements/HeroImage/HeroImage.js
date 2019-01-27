@@ -13,7 +13,7 @@ const HeroImage = (props) => (
         url('/images/heroimages.jpg'), #1c1c1c`
     }}
   >
-   <div className="swapi-heroimage-content">
+    <div className="swapi-heroimage-content">
       <div className="swapi-heroimage-text">
         <h1>{props.title}</h1>
         <p>{props.text}</p>

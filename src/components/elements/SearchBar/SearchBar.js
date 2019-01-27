@@ -13,12 +13,12 @@ class SearchBar extends Component {
     this.setState({ value: event.target.value })
     clearTimeout(this.timeout);
 
-    this.timeout = setTimeout( () => {
+    this.timeout = setTimeout(() => {
       this.props.callback(this.state.value);
     }, 500);
   }
 
-  render(){
+  render() {
     return (
       <div className="swapi-searchbar">
         <div className="swapi-searchbar-content">

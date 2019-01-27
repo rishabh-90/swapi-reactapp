@@ -6,9 +6,9 @@ import People from '../People/People';
 import Movie from '../Movie/Movie';
 import Planet from '../Planet/Planet';
 
-const App = () =>{
-    return(
-        <BrowserRouter>
+const App = () => {
+  return (
+    <BrowserRouter>
       <React.Fragment>
         <Header />
         <Switch>
@@ -19,7 +19,7 @@ const App = () =>{
         </Switch>
       </React.Fragment>
     </BrowserRouter>
-    )
+  )
 }
 
 export default App

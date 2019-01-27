@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SWAPI_URL} from '../../config';
+import { SWAPI_URL } from '../../config';
 import HeroImage from '../elements/HeroImage/HeroImage';
 import SearchBar from '../elements/SearchBar/SearchBar';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
@@ -13,7 +13,6 @@ class Home extends Component {
     heroImage: null,
     loading: false,
     currentPage: 0,
-    totalPages: 0,
     searchTerm: ''
   }
 
@@ -43,43 +42,43 @@ class Home extends Component {
 
   fetchItems = (endpoint) => {
     fetch(endpoint)
-    .then(result => result.json())
-    .then(result => {
-      this.setState({
-        movies: [...this.state.movies, ...result.results],
-        heroImage: this.state.heroImage || result.results[0],
-        loading: false,
-        currentPage: result.page,
-        totalPages: result.total_pages
+      .then(result => result.json())
+      .then(result => {
+        this.setState({
+          movies: [...this.state.movies, ...result.results],
+          heroImage: this.state.heroImage || result.results[0],
+          loading: false,
+          currentPage: result.page,
+          totalPages: result.total_pages
+        })
       })
-    })
-    .catch(error => console.error('Error:', error))
+      .catch(error => console.error('Error:', error))
   }
 
   render() {
     return (
       <div className="swapi-home">
-      {this.state.heroImage ?
-        <div>
-          <HeroImage
-            title={this.state.heroImage.title}
-            text={this.state.heroImage.opening_crawl}
-          />
-          <SearchBar callback={this.searchItems} />
-        </div> : null }
+        {this.state.heroImage ?
+          <div>
+            <HeroImage
+              title={this.state.heroImage.title}
+              text={this.state.heroImage.opening_crawl}
+            />
+            <SearchBar callback={this.searchItems} />
+          </div> : null}
         <div className="swapi-home-grid">
           <FourColGrid
             header={this.state.searchTerm ? 'Search Result' : 'Star War Movies'}
             loading={this.state.loading}
-            >
-            {this.state.movies.map ( (element, i) => {
+          >
+            {this.state.movies.map((element, i) => {
               return <MovieThumb
-                        key={i}
-                        clickable={true}
-                        image="./images/no_image.jpg"
-                        movieId={element.url.match('[\\d]+')[0]}
-                        movieName={element.title}
-                     />
+                key={i}
+                clickable={true}
+                image="./images/no_image.jpg"
+                movieId={element.url.match('[\\d]+')[0]}
+                movieName={element.title}
+              />
             })}
           </FourColGrid>
           {this.state.loading ? <Spinner /> : null}

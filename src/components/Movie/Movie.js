@@ -24,27 +24,27 @@ class Movie extends Component {
 
   fetchItems = (endpoint) => {
     fetch(endpoint)
-    .then(result => result.json())
-    .then(result => {
-        
-      if (result.status_code) {
-        this.setState({ loading: false });
-      } else {
-        this.setState({ movie: result }, () => {
-          let actor = []
+      .then(result => result.json())
+      .then(result => {
+
+        if (result.status_code) {
+          this.setState({ loading: false });
+        } else {
+          this.setState({ movie: result }, () => {
+            let actor = []
             result.characters.forEach(element => {
-                fetch(element)
+              fetch(element)
                 .then(result => result.json())
-                .then(result =>{
-                    actor.push(result)
-                    this.setState({actors : actor})
+                .then(result => {
+                  actor.push(result)
+                  this.setState({ actors: actor })
                 })
                 .then(this.setState({ loading: false }))
             })
-        })
-      }
-    })
-    .catch(error => console.error('Error:', error))
+          })
+        }
+      })
+      .catch(error => console.error('Error:', error))
   }
 
   render() {
@@ -56,18 +56,18 @@ class Movie extends Component {
             <MovieInfo movie={this.state.movie} />
             <MovieInfoBar planets={this.state.movie.planets.length} species={this.state.movie.species.length} vehicles={this.state.movie.vehicles.length} />
           </div>
-        : null }
+          : null}
         {this.state.actors ?
           <div className="swapi-movie-grid">
             <FourColGrid header={'Actors'}>
-              {this.state.actors.map( (element, i) => {
+              {this.state.actors.map((element, i) => {
                 return <Actor key={i} actor={element} />
               })}
             </FourColGrid >
           </div>
-          : null }
-          {!this.state.actors && !this.state.loading ? <h1>No Movie Found!</h1> : null}
-          {this.state.loading ? <Spinner /> : null} 
+          : null}
+        {!this.state.actors && !this.state.loading ? <h1>No Movie Found!</h1> : null}
+        {this.state.loading ? <Spinner /> : null}
       </div>
     )
   }

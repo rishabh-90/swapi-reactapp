@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SWAPI_URL} from '../../config';
+import { SWAPI_URL } from '../../config';
 import HeroImage from '../elements/HeroImage/HeroImage';
 import SearchBar from '../elements/SearchBar/SearchBar';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
@@ -54,43 +54,43 @@ class Planet extends Component {
 
   fetchItems = (endpoint) => {
     fetch(endpoint)
-    .then(result => result.json())
-    .then(result => {
-      this.setState({
-        planets: [...this.state.planets, ...result.results],
-        heroImage: this.state.heroImage || result.results[0],
-        loading: false,
-        currentPage: result.next || false ,
-        totalPages: result.total_pages
+      .then(result => result.json())
+      .then(result => {
+        this.setState({
+          planets: [...this.state.planets, ...result.results],
+          heroImage: this.state.heroImage || result.results[0],
+          loading: false,
+          currentPage: result.next || false,
+          totalPages: result.total_pages
+        })
       })
-    })
-    .catch(error => console.error('Error:', error))
+      .catch(error => console.error('Error:', error))
   }
 
   render() {
     return (
       <div className="swapi-home">
-      {this.state.heroImage ?
-        <div>
-          <HeroImage
-            title={this.state.heroImage.title}
-            text={this.state.heroImage.opening_crawl}
-          />
-          <SearchBar callback={this.searchItems} />
-        </div> : null }
+        {this.state.heroImage ?
+          <div>
+            <HeroImage
+              title={this.state.heroImage.title}
+              text={this.state.heroImage.opening_crawl}
+            />
+            <SearchBar callback={this.searchItems} />
+          </div> : null}
         <div className="swapi-home-grid">
           <FourColGrid
             header={this.state.searchTerm ? 'Search Result' : 'Star War Planets'}
             loading={this.state.loading}
-            >
-            {this.state.planets.map ( (element, i) => {
+          >
+            {this.state.planets.map((element, i) => {
               return <PlanetInfo key={i} planet={element} />
             })}
           </FourColGrid>
           {this.state.loading ? <Spinner /> : null}
-          {(this.state.currentPage  && !this.state.loading) ?
+          {(this.state.currentPage && !this.state.loading) ?
             <LoadMoreBtn text="Load More" onClick={this.loadMoreItems} />
-            : null }
+            : null}
         </div>
       </div>
     )

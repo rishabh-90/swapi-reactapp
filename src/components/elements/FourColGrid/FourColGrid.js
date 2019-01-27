@@ -4,7 +4,7 @@ import './FourColGrid.css';
 const FourColGrid = (props) => {
 
   const renderElements = () => {
-    const gridElements = props.children.map( (element, i) => {
+    const gridElements = props.children.map((element, i) => {
       return (
         <div key={i} className="swapi-grid-element">
           {element}

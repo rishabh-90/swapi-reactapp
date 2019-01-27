@@ -7,7 +7,7 @@ const MovieThumb = (props) => {
     <div className="swapi-moviethumb">
       {props.clickable ?
         <Link to={{ pathname: `/${props.movieId}`, movieName: `${props.movieName}` }}>
-        <p className="swapi-movie-name">{props.movieName}</p>
+          <p className="swapi-movie-name">{props.movieName}</p>
           <img src={props.image} alt="moviethumb" />
         </Link>
         :
@@ -15,7 +15,7 @@ const MovieThumb = (props) => {
           <p className="swapi-movie-name">{props.movieName}</p>
           <img src={props.image} alt="moviethumb" />
         </div>
-        
+
       }
     </div>
   )
