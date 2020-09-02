@@ -7,7 +7,7 @@ const Header = () => (
         <div className="swapi-header-content">
             <Link to="/">
                 <img className="swapi-logo" src="/images/logo.png" alt="swapi-logo" />
-            </Link>ßß
+            </Link>
             <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/people">Actors</Link></li>
