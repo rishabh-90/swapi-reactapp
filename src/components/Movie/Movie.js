@@ -18,7 +18,7 @@ class Movie extends Component {
   componentDidMount() {
     this.setState({ loading: true })
     // First fetch the movie ...
-    const endpoint = `${SWAPI_URL}films/${this.props.match.params.movieId}`;
+    const endpoint = `${SWAPI_URL}films/${this.props.match.params.movieId}/`;
     this.fetchItems(endpoint);
   }
 
