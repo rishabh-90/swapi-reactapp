@@ -47,7 +47,7 @@ class Planet extends Component {
     this.setState({ loading: true });
 
     if (this.state.searchTerm === '') {
-      endpoint = this.state.currentPage
+      endpoint = this.state.currentPage.replace(/^http:\/\//i, 'https://');
     }
     this.fetchItems(endpoint);
   }
