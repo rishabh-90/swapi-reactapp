@@ -33,6 +33,7 @@ class Movie extends Component {
           this.setState({ movie: result }, () => {
             let actor = []
             result.characters.forEach(element => {
+              element = element.replace(/^http:\/\//i, 'https://');
               fetch(element)
                 .then(result => result.json())
                 .then(result => {
