@@ -14,3 +14,6 @@ npm istall
 
 # To Start the App
 npm start
+
+# We Live Version
+https://swapi-react-app-rishabh.herokuapp.com/
